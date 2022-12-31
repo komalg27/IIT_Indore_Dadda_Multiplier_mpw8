@@ -2,5 +2,4 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![UPRJ_CI](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/user_project_ci.yml) [![Caravel Build](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml/badge.svg)](https://github.com/efabless/caravel_project_example/actions/workflows/caravel_build.yml)
 
-
-Matrix multiplication is probably the most important matrix operation. It is used widely in such areas as network theory, solution of linear systems of equations, transformation of co-ordinate systems, and population modeling, to name but a very few.
+Dadda proposed a method of reduction which achieves the reduced two-rowed Partial products in a minimum number of reduction stages. Dadda succeeded this, by placing the [3,2] and [2,2] counters in maximum Critical path in optimal manner. For an N-bit multiplier and multiplicand, there results a N by N partial products. These partial products are arranged in the form a Matrix. Dadda reduced these Matrix height to a two-rowed matrix, through a sequence a reduction stages.
