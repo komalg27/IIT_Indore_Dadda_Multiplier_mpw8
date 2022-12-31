@@ -78,47 +78,34 @@ module user_project_wrapper #(
     output [2:0] user_irq
 );
 
-    wire rst,execute,clk;
-    wire [2:0]sel_in;
-    wire[7:0]input_val;
-    wire [1:0]sel_out;
-    wire [16:0]result;
-    //wire [16:0]io_oeb;
+    wire  [`MPRJ_IO_PADS-1:0] io_in;
+    wire [`MPRJ_IO_PADS-1:0] io_out;
+    wire [`MPRJ_IO_PADS-1:0] io_oeb;
 
 
-    //outputs
-    assign io_out[21:5] = result ;
-    //assign io_oeb[21:5]= 17'b0000_0000_0000_0000_0;
+
+    wire [7:0] a,b;
+    wire enable;
+    wire [15:0]out;
+    //wire [15:0]io_oeb;
+
+
+    assign io_out[37:22]=out;
+    //assign io_oeb[37:22]= 16'b0000_0000_0000_0000;
     
-    //IRQ
-    //assign irq=3'b000;
-   
-    //inputs
-    assign io_in[35:28]=input_val ;
-    assign io_in[27:25]=sel_in;
-    assign io_in[37:36]=sel_out;
-    assign io_in[22]=execute;
-    assign io_in[24]=clk;
-    assign io_in[23]=rst;
     
-   
-   
+    assign io_in[12:5]=a;
+    assign io_in[20:13]=b;
+    assign io_in[21]=enable;
+    
+dadda_multiplier mprj(
+	.a(a),
+	.b(b),
+	.enable(enable),
+	.out(out),
+	
 
-matrix_multiply mprj(
-`ifdef USE_POWER_PINS
-	.vccd1(vccd1),	// User area 1 1.8V power
-	.vssd1(vssd1),	// User area 1 digital ground
-`endif
-	.sel_in(sel_in),
-	.input_val(input_val),
-	.out(result),
-	.sel_out(sel_out),
-	.clk(clk),
-	.reset(rst),
-	.execute(execute)
 );
-   
-
 endmodule	// user_project_wrapper
 
 `default_nettype wire
